@@ -21,11 +21,11 @@ function loadHTML(url, elementId) {
 // Function to load components
 function loadComponents() {
     // Load components in sequence
-    loadHTML('components/top-bar.html', 'top-bar-placeholder')
-        .then(() => loadHTML('header.html', 'header-placeholder'))
+    loadHTML('header.html', 'header-placeholder')
         .then(() => {
             // Initialize mobile menu and dropdown after header is loaded
-            initializeMobileMenu();
+            setupMobileMenu();
+            initializeDesktopDropdown();
             return loadHTML('footer.html', 'footer-placeholder');
         })
         .then(() => {
@@ -79,27 +79,61 @@ function loadComponents() {
 document.addEventListener('DOMContentLoaded', loadComponents);
 
 // Mobile menu functionality
-function initializeMobileMenu() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const projectsButton = document.querySelector('#mobile-menu button');
+function setupMobileMenu() {
+    const menuButton = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const closeButton = document.getElementById('mobile-menu-close');
+    const projectsButton = document.getElementById('mobile-projects-button');
+    const projectsDropdown = document.getElementById('mobile-projects-dropdown');
 
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    if (!menuButton || !menu || !closeButton) {
+        console.error('Mobile menu elements not found');
+        return;
     }
 
-    if (projectsButton) {
+    // Open menu
+    menuButton.addEventListener('click', () => {
+        menu.classList.remove('hidden');
+        menu.style.display = 'block';
+        menu.style.visibility = 'visible';
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close menu
+    function closeMenu() {
+        menu.classList.add('hidden');
+        menu.style.display = 'none';
+        menu.style.visibility = 'hidden';
+        document.body.style.overflow = '';
+        if (projectsDropdown) {
+            projectsDropdown.classList.add('hidden');
+        }
+    }
+
+    // Close menu events
+    closeButton.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+            closeMenu();
+        }
+    });
+
+    // Projects dropdown
+    if (projectsButton && projectsDropdown) {
         projectsButton.addEventListener('click', () => {
-            const dropdown = projectsButton.nextElementSibling;
-            dropdown.classList.toggle('hidden');
-            
-            // Toggle arrow rotation
+            projectsDropdown.classList.toggle('hidden');
             const arrow = projectsButton.querySelector('svg');
-            arrow.classList.toggle('rotate-180');
+            if (arrow) {
+                arrow.classList.toggle('rotate-180');
+            }
         });
     }
+
+    // Close menu when clicking any link
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
 }
 
 // Desktop dropdown functionality
@@ -107,46 +141,38 @@ function initializeDesktopDropdown() {
     const projectsButton = document.querySelector('.group button');
     const dropdown = document.querySelector('.group .hidden');
 
-    if (projectsButton && dropdown) {
-        // Remove any existing event listeners
-        const newProjectsButton = projectsButton.cloneNode(true);
-        projectsButton.parentNode.replaceChild(newProjectsButton, projectsButton);
+    if (!projectsButton || !dropdown) return;
 
-        // Add new event listeners
-        newProjectsButton.addEventListener('click', () => {
-            dropdown.classList.toggle('hidden');
-        });
+    projectsButton.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden');
+    });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!newProjectsButton.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.classList.add('hidden');
-            }
-        });
-    }
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!projectsButton.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
 }
 
 // Counter animation
 function initializeCounters() {
     const counters = document.querySelectorAll('.counter');
     
-    // Create an Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counter = entry.target;
                 const target = +counter.getAttribute('data-target');
-                const duration = 2000; // Animation duration in milliseconds
+                const duration = 2000;
                 const startTime = performance.now();
                 
                 const animate = (currentTime) => {
                     const elapsedTime = currentTime - startTime;
                     const progress = Math.min(elapsedTime / duration, 1);
-                    
-                    // Easing function for smooth animation
                     const easeOutQuad = t => t * (2 - t);
-                    
                     const currentValue = Math.floor(easeOutQuad(progress) * target);
+                    
                     counter.innerText = currentValue;
                     
                     if (progress < 1) {
@@ -157,17 +183,14 @@ function initializeCounters() {
                 };
                 
                 requestAnimationFrame(animate);
-                observer.unobserve(counter); // Stop observing once animation starts
+                observer.unobserve(counter);
             }
         });
     }, {
-        threshold: 0.5 // Start animation when 50% of the counter is visible
+        threshold: 0.5
     });
     
-    // Start observing each counter
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
+    counters.forEach(counter => observer.observe(counter));
 }
 
 // Smooth scrolling for anchor links
@@ -188,7 +211,6 @@ const contactForm = document.querySelector('form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        // Here you would typically send the form data to a server
         alert('Thank you for your message! We will get back to you soon.');
         this.reset();
     });
