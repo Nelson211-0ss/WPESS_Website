@@ -17,37 +17,37 @@
     <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
-    <section class="relative text-white h-screen overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-black opacity-50"></div>
+    <section class="relative h-screen">
+        <div class="absolute inset-0">
+            <!-- Background Image -->
             <div class="absolute inset-0">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-600 opacity-75"></div>
                 <img src="images/rose .jpg" 
                      alt="Hero Background" 
                      class="w-full h-full object-cover">
             </div>
+            
+            <!-- Dark Blue Overlay -->
+            <div class="absolute inset-0 bg-blue-900 opacity-70"></div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 relative z-20 h-full flex items-center">
-            <div class="flex flex-col md:flex-row items-center justify-center w-full py-20">
-                <div class="md:w-2/3 text-center">
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight" 
-                        data-aos="fade-up" 
-                        data-aos-duration="1000">
-                        Empowering Women, Building Peace in South Sudan
-                    </h1>
-                    <p class="text-xl md:text-2xl mb-12 text-gray-100 max-w-3xl mx-auto" 
-                       data-aos="fade-up" 
-                       data-aos-delay="200"
-                       data-aos-duration="1000">
-                        Join us in our mission to create sustainable change through education, advocacy, and community development.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-6 justify-center"
-                         data-aos="fade-up"
-                         data-aos-delay="400"
-                         data-aos-duration="1000">
-                        <a href="about.html" class="bg-white text-green-600 px-10 py-4 rounded-lg font-semibold hover:bg-green-50 transition duration-300 text-center text-lg">Learn More</a>
-                        <a href="contact.html" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition duration-300 text-center text-lg">Get Involved</a>
-                    </div>
+
+        <!-- Content -->
+        <div class="relative h-full max-w-7xl mx-auto px-4 flex items-center">
+            <div class="text-white max-w-3xl" data-aos="fade-up">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Empowering Women, Building Peace
+                </h1>
+                <p class="text-xl md:text-2xl mb-12 text-gray-100">
+                    Join us in our mission to create sustainable change through education, advocacy, and community development in South Sudan.
+                </p>
+                <div class="flex flex-wrap gap-6">
+                    <a href="about.html" 
+                       class="px-8 py-4 bg-white text-green-600 rounded-lg font-semibold hover:bg-green-50 transition duration-300 text-lg">
+                        Learn More
+                    </a>
+                    <a href="contact.html" 
+                       class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition duration-300 text-lg">
+                        Get Involved
+                    </a>
                 </div>
             </div>
         </div>
