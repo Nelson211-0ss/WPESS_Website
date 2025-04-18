@@ -1,0 +1,74 @@
+<!-- Header -->
+<header class="bg-gradient-to-r from-blue-50 to-green-50 shadow-md fixed top-8 left-0 right-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+            <!-- Logo and Organization Name -->
+            <div class="flex items-center space-x-4">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/partners/wpess logo.png" alt="WPESS Logo" class="h-12 w-auto">
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <span class="text-gray-800 font-extrabold text-lg tracking-wide">WOMEN FOR PEACE ENVOY SOUTH SUDAN</span>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-green-600 transition duration-300">Home</a>
+                <a href="about.html" class="text-gray-600 hover:text-green-600 transition duration-300">About</a>
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-green-600 transition duration-300 flex items-center">
+                        Projects
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-1 z-50">
+                        <a href="ongoing-projects.html" class="block px-4 py-2 text-gray-600 hover:bg-green-50 hover:text-green-600 transition duration-300">Ongoing Projects</a>
+                        <a href="completed-projects.html" class="block px-4 py-2 text-gray-600 hover:bg-green-50 hover:text-green-600 transition duration-300">Completed Projects</a>
+                        <a href="upcoming-projects.html" class="block px-4 py-2 text-gray-600 hover:bg-green-50 hover:text-green-600 transition duration-300">Upcoming Projects</a>
+                    </div>
+                </div>
+                <a href="programs.html" class="text-gray-600 hover:text-green-600 transition duration-300">Programs</a>
+                <a href="contact.html" class="text-gray-600 hover:text-green-600 transition duration-300">Contact</a>
+                <a href="donate.html" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300">Donate</a>
+            </nav>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button type="button" id="mobile-menu-button" class="text-gray-700 hover:text-green-600 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="hidden md:hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-green-600 transition duration-300">Home</a>
+            <a href="about.html" class="block px-3 py-2 text-gray-600 hover:text-green-600 transition duration-300">About</a>
+            <div class="relative">
+                <button class="w-full text-left px-3 py-2 text-gray-600 hover:text-green-600 transition duration-300 flex items-center justify-between">
+                    Projects
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="pl-4 space-y-1 hidden">
+                    <a href="ongoing-projects.html" class="block px-3 py-2 text-gray-600 hover:text-green-600 transition duration-300">Ongoing Projects</a>
+                    <a href="completed-projects.html" class="block px-3 py-2 text-gray-600 hover:text-green-600 transition duration-300">Completed Projects</a>
+                    <a href="upcoming-projects.html" class="block px-3 py-2 text-gray-600 hover:text-green-600 transition duration-300">Upcoming Projects</a>
+                </div>
+            </div>
+            <a href="programs.html" class="block px-3 py-2 text-gray-600 hover:text-green-600 transition duration-300">Programs</a>
+            <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-green-600 transition duration-300">Contact</a>
+            <a href="donate.html" class="block px-3 py-2 text-green-600 hover:text-green-700 transition duration-300">Donate</a>
+        </div>
+    </div>
+</header>
+<div class="h-16"></div> <!-- Spacer for fixed header --> 
