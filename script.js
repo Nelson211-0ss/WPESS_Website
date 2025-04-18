@@ -129,19 +129,44 @@ function initializeDesktopDropdown() {
 // Counter animation
 function initializeCounters() {
     const counters = document.querySelectorAll('.counter');
-    const speed = 200;
-
+    
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // Animation duration in milliseconds
+                const startTime = performance.now();
+                
+                const animate = (currentTime) => {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    
+                    // Easing function for smooth animation
+                    const easeOutQuad = t => t * (2 - t);
+                    
+                    const currentValue = Math.floor(easeOutQuad(progress) * target);
+                    counter.innerText = currentValue;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+                observer.unobserve(counter); // Stop observing once animation starts
+            }
+        });
+    }, {
+        threshold: 0.5 // Start animation when 50% of the counter is visible
+    });
+    
+    // Start observing each counter
     counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
-
-        if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(initializeCounters, 1);
-        } else {
-            counter.innerText = target;
-        }
+        observer.observe(counter);
     });
 }
 
