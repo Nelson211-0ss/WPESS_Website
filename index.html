@@ -17,7 +17,7 @@
             font-family: 'Poppins', sans-serif;
         }
         .gradient-text {
-            background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #2563eb 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -31,6 +31,33 @@
         }
         .hover-scale:hover {
             transform: scale(1.05);
+        }
+        /* Impact Section */
+        .relative.group .absolute {
+            background: linear-gradient(to right, #1573be, #1573be);
+        }
+        .relative.group .bg-green-100 {
+            background-color: #e0f2fe; /* light blue */
+        }
+        .relative.group .text-green-600 {
+            color: #1573be; /* specified blue */
+        }
+        /* Target Populations */
+        .bg-green-100 {
+            background-color: #e0f2fe; /* light blue */
+        }
+        .text-green-600 {
+            color: #1573be; /* specified blue */
+        }
+        /* Update all instances of green gradients and colors */
+        .bg-gradient-to-r.from-blue-600.to-green-600 {
+            background: linear-gradient(to right, #1573be, #1573be);
+        }
+        .bg-gradient-to-r.from-green-600.to-blue-600 {
+            background: linear-gradient(to right, #1573be, #1573be);
+        }
+        .bg-gradient-to-br.from-blue-50.to-green-50 {
+            background: linear-gradient(to bottom right, #e0f2fe, #e0f2fe);
         }
     </style>
 </head>

@@ -73,7 +73,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #16a34a; /* green-600 */
+    background: #1d4ed8; /* blue-700 */
 }
 
 /* Custom focus styles */
@@ -103,13 +103,13 @@
 }
 
 .btn-secondary {
-    background-color: #16a34a; /* green-600 */
+    background-color: #2563eb; /* blue-600 */
     color: white;
     transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-    background-color: #15803d; /* green-700 */
+    background-color: #1d4ed8; /* blue-700 */
 }
 
 /* Mobile Menu Styles */
@@ -155,7 +155,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #16a34a;
+    background-color: #2563eb; /* blue-600 */
     transition: width 0.3s ease;
 }
 
@@ -175,7 +175,7 @@
 }
 
 #mobile-projects-button:hover {
-    color: #16a34a;
+    color: #2563eb; /* blue-600 */
 }
 
 /* Mobile Responsive Styles */
